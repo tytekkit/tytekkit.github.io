@@ -1,0 +1,790 @@
+/* LOADER */
+
+@layer base {
+
+loader + pagination {
+  opacity: 0;
+}
+
+loader + pagination + pg.head:before {
+  mask-image: url("src/loader.svg");
+  mask-position: center;
+  mask-size: 20em;
+  mask-repeat: no-repeat;
+  -webkit-mask-image: url("src/logo.svg");
+  -webkit-mask-position: center;
+  -webkit-mask-size: 30em;
+  -webkit-mask-repeat: no-repeat;
+  background-size: auto 120%;
+  background-color: rgb(10,10,10);
+}
+
+loader + pagination + pg.head:after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: var(--acc);
+  mix-blend-mode: color;
+}
+
+:root {
+  --fs: 18px;
+  --acc: #50adc8;
+}
+
+* {
+  font-family: 'Poppins', sans-serif;
+  font-size: var(--fs);
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+.c {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* PAGINATION BUBBLES */
+
+pagination {
+  color: white;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  text-align: right;
+  flex-direction: column;
+  z-index: 2;
+  transition: opacity 2s;
+}
+
+bubble {
+  display: flex;
+  flex-direction: column;
+}
+
+bubble:before {
+  content: attr(name);
+  position: absolute;
+  text-align: right;
+  right: 0;
+  padding: 0.6em 2.6em 0.6em 0.6em;
+  background-color: rgba(20,20,20,0.85);
+  backdrop-filter: blur(4px);
+  z-index: -1;
+}
+
+bubble:after {
+  content: "⬤";
+  padding: 0.6em;
+  transition: color 0.5s ease-in-out;
+  opacity: 0.5;
+  order: -1;
+}
+
+bubble:not(.current) {
+  font-size: 0.8em;
+  color: gray;
+}
+
+bubble:hover {
+  color: var(--acc);
+  cursor: pointer;
+}
+
+bubble > bubble {
+  display: none;
+  font-size: 0.5em;
+  margin-block: 0.1em;
+}
+
+bubble > bubble:after {
+  text-align: center;
+  font-size: 0.4em;
+  padding: 2em;
+}
+
+bubble.current > bubble {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+bubble.slide {
+  color: white;
+}
+
+/* NAV */
+
+nav {
+  color: white;
+  line-height: 0;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  max-width: calc(1600px - 2em);
+  width: 100%;
+  margin: auto;
+  padding: 1em;
+  box-sizing: border-box;
+  z-index: 99;
+}
+
+nav > ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+ul > * {
+  margin-inline: 1em;
+  transition: 0.5s ease all;
+}
+
+nav ul li:hover {
+  color: var(--acc);
+  cursor: pointer;
+  padding-bottom: 8px;
+  border-bottom: 4px solid var(--acc);
+  text-shadow:  -1px -1px 0 #000,
+                1px -1px 0 #000,
+                -1px 1px 0 #000,
+                1px 1px 0 #000;
+}
+
+/* REGULAR STYLES */
+
+html {
+  scroll-snap-type: mandatory;
+	scroll-snap-points-y: repeat(100vh);
+	scroll-snap-type: y mandatory;
+  background-color: black;
+}
+
+pg {
+  scroll-snap-type: mandatory;
+	scroll-snap-points-x: repeat(100vw);
+	scroll-snap-type: x mandatory;
+  scroll-snap-align: center;
+  display: flex;
+  max-width: 1600px;
+  width: 100vw;
+  height: 100vh;
+  margin: auto;
+}
+
+pg.head:before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  background: url("src/bg.svg"), black;
+  background-size: auto 100%;
+  background-repeat: repeat-x;
+  height: 100vh;
+  animation: move 60s linear infinite;
+  transition: background-size ease 1.6s;
+}
+
+@keyframes move {
+  from  { background-position-x: 200vw }
+  to    { background-position-x: 0vw }
+}
+
+body > pg {
+  overflow-x: scroll;
+}
+
+el {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  align-self: center;
+  width: 100%;
+  height: 100%;
+  padding-inline: 3em;
+  z-index: 1;
+}
+
+el > h1,
+el > text {
+  color: white;
+  background-image: linear-gradient(to right, black 50%, transparent 100%);
+  margin: 8px;
+  padding: 14px 26px;
+  border-left: 4px solid white;
+  //backdrop-filter: blur(4px);
+}
+
+el > h1 {
+  color: var(--acc);
+  font-weight: bold;
+  font-size: 2em;
+  text-transform: uppercase;
+  border-bottom: 4px solid white;
+}
+
+button.reveal {
+  font-weight: bold;
+  color: transparent;
+  padding: 0.5em 1em;
+  text-transform: uppercase;
+  background-image: linear-gradient(to right, white 50%, var(--acc) 50%);
+  background-size: 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  padding: 0.6em 1em;
+  border: none;
+  border-radius: 0 18px;
+  margin: 0.5em;
+  transition: background-position 0.8s ease-in-out,
+              box-shadow 0.5s ease-in-out;
+}
+
+button.reveal:hover {
+  background-position: 100%;
+  box-shadow: inset 0 0 0 4px var(--acc);
+  cursor: pointer;
+}
+
+scroller {
+  color: white;
+  position: absolute;
+  left: 0; right: 0; bottom: 0.5em;
+  padding: 14px;
+  z-index: 1;
+  transition: 0.5s color;
+}
+
+scroller:hover {
+  color: var(--acc);
+  cursor: pointer;
+}
+
+scroller:before {
+  text-align: center;
+  font-size: 1.5em;
+  display: block;
+  content: "\f13a";
+  font-family: "Font Awesome 6 Free";
+  font-weight: bold;
+  animation: blink 2s linear infinite;
+}
+
+scroller:hover:before {
+  animation: none;
+}
+
+@keyframes blink {
+  70% { transform:translateY(0%) }
+  80% { transform:translateY(-30%) }
+  90% { transform:translateY(0%) }
+  95% { transform:translateY(-16%) }
+  97% { transform:translateY(0%) }
+  99% { transform:translateY(-6%) }
+  100% { transform:translateY(0) }
+}
+
+/* SPECIAL PAGES */
+
+pg[name=Projects] > pg {
+  position: relative;
+  min-width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  transition: 1s ease all;
+}
+
+pg[name=Projects] el {
+  background-color: rgb(20,20,20);
+}
+
+div.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: masonry;
+  justify-content: center;
+  align-content: center;
+  grid-auto-flow: dense;
+  place-items: center;
+  height: 80vh;
+  gap: 1em;
+  margin: auto;
+  padding: 1em;
+  background-color: var(--acc);
+  overflow: hidden;
+  overflow: visible;
+}
+
+div.gallery > img {
+  width: 100%;
+  background-color: rgb(40,40,40);
+  border: 1px solid gray;
+  transition: 1s ease all;
+  box-shadow: -10px 20px 2px 10px rgba(20,20,20,0.5);
+  transform:  rotate3d(1, 0.5, 1, -45deg)
+              translate(50%, 100%);
+}
+
+pg.current > pg.slide > div.gallery > img {
+  transform:  rotate3d(1, 0.5, 1, -45deg)
+              translate(0%, 0%);
+}
+
+div.gallery > el {
+  position: absolute;
+  bottom: 20px;
+  margin: 0;
+  padding: 1em;
+  height: auto;
+  box-sizing: border-box;
+  background-color: rgba(0,0,0,0.8);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgb(40,40,40);
+  transform: scale(0.8);
+  transition: opacity 0.5s ease-in-out;
+}
+
+pg[name=Projects]:not(.current) > pg el,
+pg[name=Projects].current > pg:not(.slide) el {
+  opacity: 0;
+}
+
+div.gallery > el > h1,
+div.gallery > el > text {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0.4em 0;
+  background: transparent;
+  backdrop-filter: none;
+  box-sizing: border-box;
+}
+
+div.gallery > el > text {
+  line-height: 1.5;
+}
+
+div.gallery > el > h1 > text {
+  flex-grow: 1;
+  font-size: 1em;
+}
+
+div.gallery i {
+  float: right;
+  font-size: 1.5em;
+  margin-inline: 0.4em;
+  transition: 0.25s filter;
+}
+
+div.gallery i:hover {
+  filter: brightness(1.2);
+}
+
+button.l, button.r {
+  display: none;
+  color: white;
+  position: absolute;
+  bottom: 5em;
+  background-color: transparent;
+  border: none;
+  padding: 1em;
+  transition: color 0.5s;
+  z-index: 2;
+}
+
+pg.slide button.l, pg.slide button.r { display: block }
+
+pg.slide:first-child button.l { display: none }
+
+pg.slide:last-child button.r { display: none }
+
+button.l:before, button.r:before {
+  font-size: 1.4em;
+  font-family: "Font Awesome 5 Free";
+  font-weight: bold;
+}
+
+button.l { left: 1em }
+
+button.l:before { content: "\f137" }
+
+button.r { right: 1em }
+
+button.r:before { content: "\f138" }
+
+button.l:hover, button.r:hover {
+  color: var(--acc);
+  mix-blend-mode: color-dodge;
+  cursor: pointer;
+}
+
+/* CONTACT */
+
+pg[name=Contact] {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-image: url("src/bg.svg");
+  background-size: cover;
+}
+
+pg[name=Contact] ul {
+  flex: 1;
+  flex-basis: 420px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2em;
+}
+
+pg[name=Contact] ul li {
+  margin: 0.5em;
+}
+
+pg[name=Contact] ul li:hover {
+  color: var(--acc);
+}
+
+pg[name=Contact] ul li label {
+  cursor: pointer;
+}
+
+pg[name=Contact] ul i {
+  background-color: rgb(20,20,20);
+  margin-right: 1em;
+  padding: 1em;
+  border-radius: 4em;
+  border: 1px solid rgb(40,40,40);
+}
+
+pg[name=Contact] text {
+  font-size: 0.8em;
+  opacity: 0.5;
+}
+
+form {
+  flex: 1;
+  flex-basis: 420px;
+  color: white;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-auto-rows: min-content;
+  max-width: 100%;
+  margin: auto;
+  padding: 2em;
+  gap: 1em;
+}
+
+form button.send {
+  position: relative;
+  overflow: visible;
+  padding-right: 5em;
+  width: 6.5em;
+}
+
+form button.send:before {
+  content: "Send";
+}
+
+form label {
+  order: -1;
+  margin: 0.8em;
+}
+
+form label:before {
+  content: attr(txt);
+}
+
+form.sending input:not(:placeholder-shown) + label:after,
+form.sending textarea:not(:placeholder-shown) + label:after {
+  content: url("src/loader.svg") !important;
+  color: var(--acc);
+  width: 2em;
+  position: absolute;
+  top: 0.5em; right: 0;
+}
+
+form.sending input:placeholder-shown,
+form.sending input:placeholder-shown + label,
+form.sending textarea:placeholder-shown,
+form.sending textarea:placeholder-shown + label {
+  text-decoration: line-through;
+  opacity: 0.35;
+}
+
+form.sent input:not(:placeholder-shown) + label:after,
+form.sent textarea:not(:placeholder-shown) + label:after {
+  content: "" !important;
+}
+
+form.sent button.send:before {
+  content: "Sent";
+}
+
+form.sent label[txt="First Name"]:before {
+  content: "Thank you,"
+}
+
+form.sent label[txt="Last Name"]:before {
+  content: "I will respond soon."
+}
+
+form.sent > div:nth-child(n+3),
+form.sent #lname {
+  display: none;
+  opacity: 0 !important;
+}
+
+form button.send:after {
+  position: absolute;
+  color: white;
+  top: calc(50% - 0.5em);
+  right: 1.2em;
+  content: "\f1d8";
+  font-family: "Font Awesome 5 Free";
+  font-weight: bold;
+}
+
+form button.send:hover:after {
+  transform: rotate(+030deg);
+}
+
+form.sending button.send:after {
+  animation: paperplane 2s linear infinite;
+}
+
+form.sent button.send:after {
+  opacity: 0;
+  animation: paperplane 2s linear forwards;
+}
+
+form.sending input,
+form.sending textarea {
+  pointer-events:none;
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+
+@keyframes paperplane {
+  from { transform: rotate(+030deg) translateX(000%) }
+  to   { transform: rotate(-300deg) translateX(800%) }
+}
+
+form.sent button i {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
+form > div {
+  display: flex;
+  flex-direction: column;
+}
+
+form input:required + label:after,
+form textarea:required + label:after {
+  content: "*";
+  color: indianred;
+  float: right;
+}
+
+form input:required:valid + label:after,
+form textarea:required:valid + label:after {
+  content: "";
+  color: var(--acc);
+}
+
+input, textarea {
+  font-size: 0.8em;
+  color: white;
+  background-color: rgba(10,10,10, 0.5);
+  padding: 1em;
+  border: 1px solid rgb(40,40,40);
+  //backdrop-filter: blur(4px);
+}
+
+input:focus, textarea:focus {
+  outline: 1px solid var(--acc);
+}
+
+textarea {
+  resize: none;
+}
+
+
+/* BGs */
+
+bg {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  margin-top: -100vh;
+  background-color: rgb(10,10,10);
+}
+
+bg.split {
+  background: linear-gradient(to right, transparent 50%, rgb(10,10,10) 50%);
+  background-size: 200% 200%;
+  background-position: 0% 0%;
+  transition: 1s ease all;
+}
+
+pg.current + bg.split {
+  background-position: 50% 0%;
+}
+
+/* ANIMATE */
+
+pg.anim-slide > * > * {
+  opacity: 0;
+}
+
+pg.anim-slide.current > * > * {
+  animation-name: fade;
+  animation-fill-mode: forwards;
+}
+
+pg.current *:nth-child(1) { animation-duration: 0.5s }
+pg.current *:nth-child(2) { animation-duration: 1.0s }
+pg.current *:nth-child(3) { animation-duration: 1.5s }
+pg.current *:nth-child(4) { animation-duration: 2.0s }
+pg.current *:nth-child(5) { animation-duration: 2.5s }
+pg.current *:nth-child(6) { animation-duration: 3.0s }
+pg.current *:nth-child(7) { animation-duration: 3.5s }
+pg.current *:nth-child(8) { animation-duration: 4.0s }
+
+@keyframes fade {
+  0%    { transform: translateY(1em); opacity: 0; }
+  50%   { transform: translateY(1em); opacity: 0; }
+  100%  { transform: translateY(0em); opacity: 1; }
+}
+
+pg.anim-delay *:nth-child(1) { transition-delay: 0.25s }
+pg.anim-delay *:nth-child(2) { transition-delay: 0.50s }
+pg.anim-delay *:nth-child(3) { transition-delay: 0.75s }
+pg.anim-delay *:nth-child(4) { transition-delay: 1.00s }
+pg.anim-delay *:nth-child(5) { transition-delay: 1.25s }
+pg.anim-delay *:nth-child(6) { transition-delay: 1.50s }
+pg.anim-delay *:nth-child(7) { transition-delay: 1.75s }
+pg.anim-delay *:nth-child(8) { transition-delay: 2.00s }
+
+}
+
+/* MOBILE */
+
+@media only screen and (max-width: 768px) {
+
+  * {
+    opacity: 1;
+  }
+
+  a {
+    display: contents;
+  }
+
+  el {
+    padding-inline: 0.4em;
+  }
+
+  html {
+    background-color: rgb(20,20,20);
+    scroll-snap-type: none;
+  }
+
+  .hidem {
+    display: none;
+  }
+
+  items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 1em);
+    color: white;
+    background-image: linear-gradient(to right, transparent 50%, var(--acc) 100%);
+    background: rgba(80,80,80,0.5);
+    border-radius: 0;
+    margin: 0.4em;
+    padding: 1.4em 1.6em;
+    backdrop-filter: blur(4px);
+    -webkit-background-clip: border-box;
+  }
+
+  button:hover {
+    background-color: var(--acc);
+  }
+
+  bg {
+    display: none;
+  }
+
+  pagination {
+    display: none;
+  }
+
+  pg[name=Projects] {
+    display: contents;
+    height: auto;
+    overflow-y: auto;
+  }
+
+  pg[name=Projects] > pg {
+    height: auto;
+    overflow-y: auto;
+  }
+
+  div.gallery {
+    grid-template-columns: repeat(2, 1fr);
+    height: auto;
+    background-color: rgb(20,20,20);
+  }
+
+  div.gallery > el {
+    position: static;
+    grid-column: -1/1;
+    grid-row: 1/1;
+    background-color: transparent;
+    margin-block: 2em;
+    padding: 0;
+    border: none;
+    transform: scale(1);
+  }
+
+  div.gallery > img {
+    transform:  none;
+    box-shadow: none;
+  }
+
+  pg[name=Contact] {
+    height: auto;
+  }
+
+  nav ul li a {
+    font-size: 0;
+  }
+
+  button.l, button.r {
+    display: none;
+  }
+
+  pg[name="Contact"] ul i {
+    background-color: rgb(40,40,40);
+  }
+
+  form {
+    padding-inline: 0.8em;
+  }
+
+}

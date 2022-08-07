@@ -1,0 +1,125 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>'s portfolio</title>
+  <link rel="icon" type="image/x-icon" href="/src/logo.svg">
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="src/fa/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap" rel="stylesheet">
+  <script type="text/javascript" src="script.js" defer></script>
+</head>
+<body onload="loaded()">
+  <loader></loader>
+  <pagination class="c"></pagination>
+  <pg name="Intro" class="head anim-slide">
+    <nav>
+      <ul>
+        <a href=".">
+          <li class="c"><img class="c" src="src/logo.svg" style="height: 48px"></li>
+        </a>
+      </ul>
+      <ul>
+        <li>
+          <a href="https://linkedin.com/in/ty-correll/" target="_blank">
+            <i class="fa-brands fa-linkedin"></i> &nbsp LinkedIn
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/tytekkit" target="_blank">
+            <i class="fa-brands fa-github-alt"></i> &nbsp GitHub
+          </a>
+        </li>
+        <li>
+          <a href="mailto:tytekkit@gmail.com?subject=Ty Correll - Portfolio&body=Hello,">
+            <i class="fa-solid fa-at"></i> &nbsp Email
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <el>
+      <h1>UI/UX Designer & Full-stack Developer</h1>
+      <text>Devs are often called wizards, but it isn't magic; it's computer science.</text>
+      <items>
+        <a href="src/resume.pdf" download>
+          <button class="reveal">Resume &nbsp <i class="fa-solid fa-download"></i></button>
+        </a>
+        <a href="https://codepen.io/tytekkit" target="_blank">
+          <button class="reveal">Code &nbsp <i class="fa-brands fa-codepen"></i></button>
+        </a>
+        <button class="reveal hidem" onclick="scroller('Projects')">Projects &nbsp <i class="fa-solid fa-folder-closed"></i></button>
+      </items>
+    </el>
+  </pg>
+  <pg name="Projects" class="anim-delay">
+  </pg>
+  <pg name="Contact" class="anim-slide">
+    <form onsubmit="subform(event)">
+      <div>
+        <input type="text" id="fname" name="firstname" placeholder="Your name.." required>
+        <label for="fname" txt="First Name"></label>
+      </div>
+      <div>
+        <input type="text" id="lname" name="lastname" placeholder="Your last name.." required>
+        <label for="lname" txt="Last Name"></label>
+      </div>
+      <div>
+        <input type="email" id="email" name="email" placeholder="Your email..">
+        <label for="subject" txt="Email"></label>
+      </div>
+      <div>
+        <input type="phone" id="phone" name="phone" placeholder="Your phone #..">
+        <label for="subject" txt="Phone"></label>
+      </div>
+      <div style="grid-column: -1/1">
+        <input type="text" id="subject" name="subject" placeholder="Your subject..">
+        <label for="subject" txt="Subject"></label>
+      </div>
+      <div style="grid-column: -1/1">
+        <textarea id="message" name="message" placeholder="Write something.." style="height:200px" required></textarea>
+        <label for="subject" txt="Message"></label>
+      </div>
+      <button class="send reveal" type="submit"></button>
+      <!-- Honeypot -->
+      <input type="text" name="_honey" style="display: none;">
+      <!-- Disable Captcha -->
+      <input type="hidden" name="_captcha" value="false">
+    </form>
+    <ul id="contact">
+      <li>
+        <a href="https://www.google.com/maps/d/u/0/embed?mid=1utWscP2VmRyUT5McKhew17ILc9o&msa=0&ie=UTF8&t=m&ll=32.761872%2C-97.353287&spn=0.101048%2C0.240326&z=12&output=embed" target="_blank">
+        <label><i class="fa-solid fa-location-arrow"></i> Location</label>
+        <text>Fort Worth, TX</text>
+        </a>
+      </li>
+      <li>
+        <a href="tel:682-260-0647">
+        <label><i class="fa-solid fa-phone"></i> Phone</label>
+        <text>+1 682 260 0647</text>
+        </a>
+      </li>
+      <li>
+        <a href="mailto:tytekkit@gmail.com?subject=Ty Correll - Portfolio&body=Hello,">
+        <label><i class="fa-solid fa-at"></i> Email</label>
+        <text>tytekkit@gmail.com</text>
+        </a>
+      </li>
+      <li>
+        <a href="https://linkedin.com/in/ty-correll/" target="_blank">
+        <label><i class="fa-brands fa-linkedin"></i> LinkedIn</label>
+        <text>in/patrick-correll</text>
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/tytekkit" target="_blank">
+        <label><i class="fa-brands fa-github-alt"></i> GitHub</label>
+        <text>github.com/tytekkit</text>
+        </a>
+      </li>
+    </ul>
+  </pg>
+  <bg class="split hidem">
+  </bg>
+  <scroller class="c hidem" onclick="scroller('Projects')"></scroller>
+</body>
