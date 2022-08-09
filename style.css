@@ -11,7 +11,7 @@ loader + pagination + pg.head:before {
   mask-position: center;
   mask-size: 20em;
   mask-repeat: no-repeat;
-  -webkit-mask-image: url("src/logo.svg");
+  -webkit-mask-image: url("src/signature.png");
   -webkit-mask-position: center;
   -webkit-mask-size: 30em;
   -webkit-mask-repeat: no-repeat;
