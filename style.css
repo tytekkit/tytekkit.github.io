@@ -923,8 +923,8 @@ footer {
   }
 
   pg[name=Projects]:before {
-    content: "These are my Projects.";
-    color: white;
+    content: "My Projects";
+    color: var(--acc);
     display: block;
     font-size: 2em;
     margin: 2em 1.5em 1em 1.5em;
@@ -974,7 +974,7 @@ footer {
 
   pg[name=Contact]:before {
     content: "Contact Me";
-    color: white;
+    color: var(--acc);
     display: block;
     font-size: 2em;
     margin: 2em 1.5em 1em 1.5em;
