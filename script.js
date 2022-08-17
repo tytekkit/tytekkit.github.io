@@ -111,15 +111,15 @@ scroller = (name) => {
 // SCROLLING - Handler
 
 let pgs = body.querySelectorAll("body > pg");
+let cx = 0//previous position
 
 body.onscroll = (e) => {
-
-  let cs = document.getElementsByClassName("current");
-  while (cs.length) cs[0].classList.remove("current");
   const scroll = body.scrollTop,
         win = window.innerHeight,
         c = Math.round(scroll / win);
-
+  let cs = document.getElementsByClassName("current");
+  if (c !== cx) while (cs.length) cs[0].classList.remove("current");
+  cx = c;
   bbls.children[c].classList.add("current");
   pgs[c].classList.add("current");
 
@@ -179,7 +179,7 @@ const mytags = [
 const tc = body.querySelector("tagcloud");
 
 var tagCloud = TagCloud(tc, mytags,{
-  radius: 400,
+  radius: 360,
   maxSpeed: 'normal',
   initSpeed: 'slow',
   direction: 120,

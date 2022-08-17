@@ -801,8 +801,6 @@ pg.anim-delay *:nth-child(6) { transition-delay: 1.50s }
 pg.anim-delay *:nth-child(7) { transition-delay: 1.75s }
 pg.anim-delay *:nth-child(8) { transition-delay: 2.00s }
 
-}
-
 /* FOOTER */
 
 footer {
@@ -810,16 +808,30 @@ footer {
   justify-content: center;
   align-items: center;
   font-size: 0.75em;
+  width: 100%;
   padding: 2em;
   background-color: var(--acc);
+  box-sizing: border-box;
 }
+
+}
+
+@layer mobile {
 
 /* MOBILE */
 
 @media only screen and (max-width: 768px) {
 
-  * {
-    opacity: 1;
+  *:not(span) {
+    opacity: 1 !important;
+  }
+
+  loader {
+    background-color: rgb(27,31,42);
+  }
+
+  loader ~ * {
+    display: none !important;
   }
 
   a {
@@ -851,6 +863,7 @@ footer {
   }
 
   button {
+    grid-column: -1 / 1;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -869,6 +882,11 @@ footer {
   button:hover {
     color: black;
     background-color: var(--acc);
+  }
+
+  button.send {
+    width: 100%;
+    margin-inline: 0.1em;
   }
 
   button.send:hover:after {
@@ -895,10 +913,7 @@ footer {
 
   pg[name=Skills] {
     margin-top: 4em;
-  }
-
-  pg[name=Skills] *:not(span) {
-    opacity: 1 !important;
+    overflow-x: hidden;
   }
 
   pg[name=Projects] {
@@ -985,5 +1000,7 @@ footer {
   form {
     padding-inline: 0.8em;
   }
+
+}
 
 }
