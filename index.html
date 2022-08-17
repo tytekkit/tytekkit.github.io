@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap" rel="stylesheet">
   <script type="text/javascript" src="script.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/TagCloud@2.2.0/dist/TagCloud.min.js"></script>
 </head>
 <body onload="loaded()">
   <loader></loader>
@@ -17,7 +18,7 @@
     <nav>
       <ul>
         <a href=".">
-          <li class="c"><img class="c" src="src/signature.png" style="height: 48px"></li>
+          <li id="logo" class="c"><img class="c" src="src/signature.png" style="height: 48px"></li>
         </a>
       </ul>
       <ul>
@@ -39,8 +40,9 @@
       </ul>
     </nav>
     <el>
-      <h1>UI/UX Designer & Full-stack Developer</h1>
-      <text>Devs are often called wizards, but it isn't magic; it's computer science.</text>
+      <img src="src/profile.png">
+      <h1>Hi, I'm <c>Ty</c>.</h1>
+      <text>I'm a UI/UX Designer & Full-stack Developer.</text>
       <items>
         <a href="src/resume.pdf" download>
           <button class="reveal">Resume &nbsp <i class="fa-solid fa-download"></i></button>
@@ -52,13 +54,21 @@
       </items>
     </el>
   </pg>
+  <pg name="Skills" class="anim-slide">
+    <el>
+      <img src="src/profile.png">
+      <h1>These are my <c>Tools</c>.</h1>
+      <text>They get alot of use.</text>
+    </el>
+    <tagcloud></tagcloud>
+  </pg>
   <pg name="Projects" class="anim-delay">
   </pg>
   <pg name="Contact" class="anim-slide">
     <form onsubmit="subform(event)">
       <div>
         <input type="text" id="fname" name="firstname" placeholder="Your name.." required>
-        <label for="fname" txt="First Name"></label>
+        <label for="fname" txt="Name"></label>
       </div>
       <div>
         <input type="text" id="lname" name="lastname" placeholder="Your last name.." required>
@@ -121,5 +131,6 @@
   </pg>
   <bg class="split hidem">
   </bg>
-  <scroller class="c hidem" onclick="scroller('Projects')"></scroller>
+  <footer class="c">Copyright © 2022 Ty Correll, All rights reserved.</footer>
+  <scroller class="c hidem" onclick="scroller('Skills')"></scroller>
 </body>

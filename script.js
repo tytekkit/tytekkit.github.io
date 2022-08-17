@@ -17,6 +17,14 @@ const ps = {
     txt : "Lablo is a desktop app for Win/MacOS that streams to Twitch, with custom overlays, stream controls & widgets. Built in Electron utilizing html, js, css & node.js",
     acc: "#6b48da"
   },
+  "Weather"  : {
+    box : [
+      {size: [1,1], url: "src/weather/app.gif"},
+      {size: [1,1], url: "src/weather/long.png"},
+      {size: [2,1], url: "src/weather/code.png"}],
+    txt : "A React weather app that uses geolocation, rain alerts, 7-day forecasting and provides fundamental weather data.",
+    acc: "#71b3ff"
+  },
   "Spooder Web"  : {
     box : [
       {size: [2,1], url: "src/spooder/banner.png"},
@@ -110,7 +118,7 @@ body.onscroll = (e) => {
   while (cs.length) cs[0].classList.remove("current");
   const scroll = body.scrollTop,
         win = window.innerHeight,
-        c = Math.ceil(scroll / win);
+        c = Math.round(scroll / win);
 
   bbls.children[c].classList.add("current");
   pgs[c].classList.add("current");
@@ -124,7 +132,7 @@ slide.onscroll = (e) => {
 
   let scroll = slide.scrollLeft,
       width = slide.offsetWidth,
-      c = Math.ceil(scroll / width);
+      c = Math.round(scroll / width);
       c++;
 
   body.querySelectorAll(`[name=Projects] > :nth-child(${c})`)
@@ -137,7 +145,7 @@ slide.onscroll = (e) => {
 let check = false;
 loaded = async () => check = true;
 const wait = () => {
-  if (!check) setTimeout(wait, 2000);
+  if (!check) setTimeout(wait, 500);
   else {
     slide.firstElementChild.classList.add("slide");
     bbls.querySelector("bubble[name=Projects]").firstElementChild.classList.add("slide");
@@ -161,3 +169,23 @@ subform = (e) => {
   req.send(new FormData(event.target));
   e.preventDefault();
 }
+
+// TagCloud
+
+const mytags = [
+  "HTML", "XHTML", "CSS3", "SASS", "LESS", "Bootstrap",
+  "Javascript", "JQuery", "React", "PHP", "MySQL", "Python",
+  "AWS", "Node.js", "Laravel", "Wireframing", "Prototyping", "Sketch",
+  "Figma", "Photoshop", "Illustrator", "InDesign", "Illustration",
+  "Unity", "Unreal", "Godot", "Electron", "Canvas", "WordPress"
+]
+
+const tc = body.querySelector("tagcloud");
+
+var tagCloud = TagCloud(tc, mytags,{
+  radius: 400,
+  maxSpeed: 'normal',
+  initSpeed: 'slow',
+  direction: 120,
+  keep: true
+});
