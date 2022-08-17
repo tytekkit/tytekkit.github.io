@@ -962,6 +962,7 @@ footer {
   }
 
   div.gallery > img {
+    align-self: start;
     transform:  none;
     box-shadow: none;
   }
