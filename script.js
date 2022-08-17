@@ -173,11 +173,7 @@ subform = (e) => {
 // TagCloud
 
 const mytags = [
-  "HTML", "XHTML", "CSS3", "SASS", "LESS", "Bootstrap",
-  "Javascript", "JQuery", "React", "PHP", "MySQL", "Python",
-  "AWS", "Node.js", "Laravel", "Wireframing", "Prototyping", "Sketch",
-  "Figma", "Photoshop", "Illustrator", "InDesign", "Illustration",
-  "Unity", "Unreal", "Godot", "Electron", "Canvas", "WordPress"
+  "","","","","","","","","","","","","","","",""
 ]
 
 const tc = body.querySelector("tagcloud");

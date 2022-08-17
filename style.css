@@ -330,22 +330,45 @@ tagcloud:before {
   font-size: 20em;
   font-weight: bold;
   color: var(--acc);
-  //-webkit-text-stroke: 4px var(--acc);
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0.2;
+  opacity: 0.5;
 }
 
 div.tagcloud {
   max-width: 100vw;
 }
 
-div.tagcloud span {
-  z-index: -99 !important;
+span.tagcloud--item:before {
+  font-family: "Font Awesome 5 Brands";
+  font-weight: bold;
+  font-size: 4em;
 }
+
+span.tagcloud--item:nth-child(1):before { content: "\f3d3" } /* Node.js */
+span.tagcloud--item:nth-child(2):before { content: "\f13b" } /* HTML5 */
+span.tagcloud--item:nth-child(3):before { content: "\f38b" } /* CSS3 */
+span.tagcloud--item:nth-child(4):before { content: "\f41e" } /* SASS */
+span.tagcloud--item:nth-child(7):before { content: "\f836" } /* Bootstrap */
+span.tagcloud--item:nth-child(8):before { content: "\f3b9" } /* Javascript */
+span.tagcloud--item:nth-child(9):before { content: "\f41b" } /* React */
+span.tagcloud--item:nth-child(10):before { content: "\f457" } /* PHP */
+span.tagcloud--item:nth-child(11):before { content: "\f3e2" } /* Python */
+span.tagcloud--item:nth-child(12):before { content: "\f375" } /* AWS */
+span.tagcloud--item:nth-child(13):before { content: "\f3bd" } /* Laravel */
+span.tagcloud--item:nth-child(14):before { content: "\f799" } /* Figma */
+span.tagcloud--item:nth-child(15):before { content: "\e049" } /* Unity */
+span.tagcloud--item:nth-child(16):before { content: "\f411" } /* WordPress */
+/*
+"HTML", "XHTML", "CSS3", "SASS", "LESS", "Bootstrap",
+"Javascript", "JQuery", "React", "PHP", "MySQL", "Python",
+"AWS", "Node.js", "Laravel", "Wireframing", "Prototyping", "Sketch",
+"Figma", "Photoshop", "Illustrator", "InDesign", "Illustration",
+"Unity", "Unreal", "Godot", "Electron", "Canvas", "WordPress"
+*/
 
 pg[name=Projects] > pg {
   position: relative;
