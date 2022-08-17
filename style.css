@@ -6,25 +6,21 @@ loader + pagination {
   opacity: 0;
 }
 
-loader + pagination + pg.head:before {
-  mask-image: url("src/loader.svg");
-  mask-position: center;
-  mask-size: 20em;
-  mask-repeat: no-repeat;
-  -webkit-mask-image: url("src/signature.png");
-  -webkit-mask-position: center;
-  -webkit-mask-size: 30em;
-  -webkit-mask-repeat: no-repeat;
-  background-size: auto 120%;
-  background-color: #1b1f2a;
-}
-
-loader + pagination + pg.head:after {
-  content: "";
+loader {
+  font-weight: bold;
+  color: var(--acc);
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgb(37,41,52);
-  mix-blend-mode: color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+loader:before {
+  content: url("src/loader.svg");
+  display: block;
+  width: 200px;
+  height: 200px;
 }
 
 :root {
@@ -185,14 +181,22 @@ pg {
 
 pg.head:before {
   content: "";
-  position: absolute;
+  position: fixed;
   top: 0; left: 0; right: 0;
-  background: url("src/bg.svg"), rgb(27,31,42);
-  background-size: auto 100%;
+  background: url("src/bg.svg");
+  background-size: 100% 200%;
+  background-position: center;
   background-repeat: repeat-x;
   height: 100vh;
   animation: move 60s linear infinite;
-  transition: background-size ease 1.6s;
+  transition: background-size ease 1.6s, background-position ease 1.6s, opacity ease 0.5s;
+  z-index: -1;
+  opacity: 0.2;
+}
+
+pg.head.current:before {
+  background-position: bottom;
+  opacity: 0.5
 }
 
 @keyframes move {
@@ -223,7 +227,7 @@ el > text {
   color: white;
   background-image: linear-gradient(to right, var(--bg) 50%, transparent 100%);
   margin: 0.5rem;
-  padding: 1em 2rem;
+  padding: 1rem 2rem;
   backdrop-filter: blur(4px);
 }
 
@@ -263,13 +267,20 @@ button.reveal:hover {
   cursor: pointer;
 }
 
+/* SPECIAL PAGES */
+
 scroller {
   color: white;
   position: absolute;
   left: 0; right: 0; bottom: 0.5em;
   padding: 14px;
+  opacity: 0;
   z-index: 1;
-  transition: 0.5s color;
+  transition: 0.5s color, 0.5s opacity;
+}
+
+pg[name=Intro].current scroller {
+  opacity: 1;
 }
 
 scroller:hover {
@@ -301,8 +312,6 @@ scroller:hover:before {
   100% { transform:translateY(0) }
 }
 
-/* SPECIAL PAGES */
-
 pg[name=Skills] {
   flex-wrap: wrap;
 }
@@ -322,6 +331,7 @@ tagcloud:before {
   font-size: 20em;
   font-weight: bold;
   color: var(--acc);
+  //-webkit-text-stroke: 4px var(--acc);
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   display: flex;
@@ -332,6 +342,10 @@ tagcloud:before {
 
 div.tagcloud {
   max-width: 100vw;
+}
+
+div.tagcloud span {
+  z-index: -99 !important;
 }
 
 pg[name=Projects] > pg {
@@ -483,16 +497,6 @@ pg[name=Contact] {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  background-image: url("src/bg.svg");
-  background-size: cover;
-  background-position-x: -200%;
-  box-shadow: inset 0 0 0 10px rgba(255,255,255,0.1);
-  transition: 2s ease all;
-}
-
-pg[name=Contact].current {
-  background-position-x: 0%;
-  box-shadow: inset 0 0 0 1px transparent;
 }
 
 pg[name=Contact] ul {
@@ -702,11 +706,11 @@ bg {
   width: 100vw;
   height: 100vh;
   margin-top: -100vh;
-  background-color: rgb(10,10,10);
+  background-color: rgb(27,31,42);
 }
 
 bg.split {
-  background: linear-gradient(to right, transparent 50%, rgb(29, 33, 44) 50%);
+  background: linear-gradient(to right, transparent 50%, rgb(27,31,42) 50%);
   background-size: 200% 200%;
   background-position: 0% 0%;
   transition: 1s ease all;
@@ -836,7 +840,7 @@ footer {
   }
 
   pg[name=Intro] {
-    min-height: 100vh;
+    margin-top: 8em;
   }
 
   pg[name=Skills] {
@@ -883,7 +887,6 @@ footer {
   pg[name=Contact] {
     height: auto;
     background-position-x: 0%;
-    box-shadow: none;
     padding-bottom: 4em;
   }
 

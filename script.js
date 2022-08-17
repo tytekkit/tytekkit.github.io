@@ -145,7 +145,7 @@ slide.onscroll = (e) => {
 let check = false;
 loaded = async () => check = true;
 const wait = () => {
-  if (!check) setTimeout(wait, 500);
+  if (!check) setTimeout(wait, 1500);
   else {
     slide.firstElementChild.classList.add("slide");
     bbls.querySelector("bubble[name=Projects]").firstElementChild.classList.add("slide");
