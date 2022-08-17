@@ -40,6 +40,10 @@ loader + pagination + pg.head:after {
   scroll-behavior: smooth;
 }
 
+*:focus {
+  outline: 2px solid var(--acc);
+}
+
 .c {
   display: inline-flex;
   justify-content: center;
@@ -580,6 +584,22 @@ form.sent textarea:not(:placeholder-shown) + label:after {
   content: "" !important;
 }
 
+form.sent * {
+  backdrop-filter: none;
+}
+
+form.sent > div {
+  grid-column: -1 / 1;
+}
+
+form.sent input {
+  font-size: 1em;
+}
+
+form.sent button.send {
+  pointer-events: none;
+}
+
 form.sent button.send:before {
   content: "Sent!";
 }
@@ -661,7 +681,7 @@ input, textarea {
   font-size: 0.8em;
   color: white;
   background-color: rgb(27, 31, 42, 0.8);
-  padding: 1em;
+  padding: 1rem;
   border: 1px solid rgb(47, 51, 62);
   backdrop-filter: blur(4px);
 }
