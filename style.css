@@ -292,7 +292,7 @@ scroller:before {
   text-align: center;
   font-size: 1.5em;
   display: block;
-  content: "\f13a";
+  content: "\f107";
   font-family: "Font Awesome 6 Free";
   font-weight: bold;
   animation: blink 2s linear infinite;
@@ -377,11 +377,6 @@ div.gallery {
   overflow: visible;
 }
 
-div.gallery h1 {
-  color: var(--acc);
-  padding: 0.5em 1em 0em 1em;
-}
-
 div.gallery > img {
   width: 100%;
   background-color: rgb(40,40,40);
@@ -400,6 +395,8 @@ pg.current > pg.slide > div.gallery > img {
 div.gallery > el {
   position: absolute;
   bottom: 20px;
+  flex-direction: row;
+  align-items: center;
   margin: 0;
   padding: 1em;
   height: auto;
@@ -416,6 +413,10 @@ pg[name=Projects].current > pg:not(.slide) el {
   opacity: 0;
 }
 
+div.gallery h1 {
+  color: var(--acc);
+}
+
 div.gallery > el > h1,
 div.gallery > el > text {
   display: flex;
@@ -427,10 +428,32 @@ div.gallery > el > text {
   box-sizing: border-box;
 }
 
+div.gallery > el > h1 {
+  flex: 0;
+}
+
+div.gallery > el > a {
+  color: var(--acc);
+  display: inline-block;
+  padding: 1em;
+}
+
 c {
   display: contents !important;
   color: var(--acc);
   font-size: 1em;
+}
+
+pg[name=Projects] > pg:not(:first-child):not(:last-child) el {
+  padding-inline: 4em;
+}
+
+pg[name=Projects] > pg:first-child el {
+  padding-right: 4em;
+}
+
+pg[name=Projects] > pg:last-child el {
+  padding-left: 4em;
 }
 
 div.gallery > el > text {
@@ -457,11 +480,13 @@ button.l, button.r {
   display: none;
   color: white;
   position: absolute;
-  bottom: 5em;
+  top: 0;
+  bottom: 0;
   background-color: transparent;
   border: none;
-  padding: 1em;
-  transition: color 0.5s;
+  padding: 1em 2.5em;
+  transition: 0.5s ease all;
+  transition-delay: 0s !important;
   z-index: 2;
 }
 
@@ -477,17 +502,16 @@ button.l:before, button.r:before {
   font-weight: bold;
 }
 
-button.l { left: 1em }
+button.l { left: 0 }
 
-button.l:before { content: "\f137" }
+button.l:before { content: "\f104" }
 
-button.r { right: 1em }
+button.r { right: 0 }
 
-button.r:before { content: "\f138" }
+button.r:before { content: "\f105" }
 
 button.l:hover, button.r:hover {
   color: var(--acc);
-  mix-blend-mode: color-dodge;
   cursor: pointer;
 }
 
@@ -784,6 +808,10 @@ footer {
     padding-inline: 0.4em;
   }
 
+  el > img {
+    margin: 2em;
+  }
+
   html {
     scroll-snap-type: none;
   }
@@ -804,13 +832,13 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: calc(100% - 1em);
+    width: calc(100% - 4em);
     color: white;
     background-image: linear-gradient(to right, transparent 50%, var(--acc) 100%);
     background-color: rgb(27, 31, 42, 0.8);
     border: 1px solid rgb(47, 51, 62);
     border-radius: 0;
-    margin: 0.4em;
+    margin: 0.5em;
     padding: 1.4em 1.6em;
     backdrop-filter: blur(4px);
     -webkit-background-clip: border-box;
@@ -857,6 +885,14 @@ footer {
     overflow-y: auto;
   }
 
+  pg[name=Projects]:before {
+    content: "These are my Projects.";
+    color: white;
+    display: block;
+    font-size: 2em;
+    margin: 2em 1.5em 1em 1.5em;
+  }
+
   pg[name=Projects] > pg {
     height: auto;
     overflow-y: auto;
@@ -865,18 +901,27 @@ footer {
   div.gallery {
     grid-template-columns: repeat(2, 1fr);
     height: auto;
-    background-color: var(--bg);
+    background-color: transparent;
   }
 
   div.gallery > el {
     position: static;
     grid-column: -1/1;
     grid-row: 1/1;
-    background-color: transparent;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     margin-block: 2em;
-    padding: 0;
+    padding: 2em;
     border: none;
+    border-bottom: 4px solid var(--acc);
+    box-shadow: -4px 4px 6px rgb(20,20,20,0.5);
     transform: scale(1);
+  }
+
+  div.gallery > el > *,
+  div.gallery > el i {
+    margin: 0;
+    padding: 1rem;
   }
 
   div.gallery > img {
@@ -888,6 +933,14 @@ footer {
     height: auto;
     background-position-x: 0%;
     padding-bottom: 4em;
+  }
+
+  pg[name=Contact]:before {
+    content: "Contact Me";
+    color: white;
+    display: block;
+    font-size: 2em;
+    margin: 2em 1.5em 1em 1.5em;
   }
 
   nav ul li a {

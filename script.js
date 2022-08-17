@@ -25,7 +25,7 @@ const ps = {
     txt : "A React weather app that uses geolocation, rain alerts, 7-day forecasting and provides fundamental weather data.",
     acc: "#71b3ff"
   },
-  "Spooder Web"  : {
+  "Spooder"  : {
     box : [
       {size: [2,1], url: "src/spooder/banner.png"},
       {size: [1,1], url: "src/spooder/part1.png"},
@@ -63,8 +63,6 @@ let html = "";
 for (p in ps) {
   let set = ps[p];
   html += `<pg name="${p}" style="--acc: ${ps[p]["acc"]}; --bg: ${ps[p]["bg"]}">`;
-  html +=   `<button class="l" onclick="mslide(-1)"></button>`;
-  html +=   `<button class="r" onclick="mslide(1)"></button>`;
   html +=   `<div class="gallery">`;
   for (img in set["box"]) {
     let size = set["box"][img]["size"],
@@ -72,14 +70,16 @@ for (p in ps) {
     html += `<img style="grid-column: span ${size[0]}; grid-row: span ${size[1]};" src=${url}>`;
   };
   html +=   `<el>`;
+  html +=     `<button class="l" onclick="mslide(-1)"></button>`;
   html +=     `<h1>`;
   html +=       `<text>${p}</text>`;
-  if (ps[p]["link"]) html +=
-                `<a href="${ps[p]["link"]}" target="_blank"><i class="fa-solid fa-link"></i></a>`;
-  if (ps[p]["gh"]) html +=
-                `<a href="${ps[p]["gh"]}" target="_blank"><i class="fa-brands fa-github-alt"></i></a>`;
   html +=     `</h1>`;
   html +=     `<text>${ps[p]["txt"]}</text>`;
+  if (ps[p]["link"]) html +=
+              `<a href="${ps[p]["link"]}" target="_blank"><i class="fa-solid fa-link"></i></a>`;
+  if (ps[p]["gh"]) html +=
+              `<a href="${ps[p]["gh"]}" target="_blank"><i class="fa-brands fa-github-alt"></i></a>`;
+  html +=     `<button class="r" onclick="mslide(1)"></button>`;
   html +=   `</el>`;
   html +=   `</div>`;
   html += `</pg>`;
