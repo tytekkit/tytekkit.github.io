@@ -515,6 +515,7 @@ pg[name=Contact] ul li:hover {
 
 pg[name=Contact] ul li label {
   cursor: pointer;
+  padding-right: 1em;
 }
 
 pg[name=Contact] ul i {
