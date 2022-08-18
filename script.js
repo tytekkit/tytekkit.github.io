@@ -18,7 +18,8 @@ const ps = {
     acc: "#6b48da"
   },
   "Weather"  : {
-    box : [
+    box :
+      {size: [1,1], url: "src/weather/loading.gif"},
       {size: [1,1], url: "src/weather/app.gif"},
       {size: [1,1], url: "src/weather/long.jpg"},
       {size: [2,1], url: "src/weather/code.jpg"}],
