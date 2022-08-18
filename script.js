@@ -21,7 +21,6 @@ const ps = {
     box : [
       {size: [1,1], url: "src/weather/loading.gif"},
       {size: [1,1], url: "src/weather/app.gif"},
-      {size: [1,1], url: "src/weather/long.jpg"},
       {size: [2,1], url: "src/weather/code.jpg"}],
     txt : "A React weather app that uses geolocation, rain alerts, 7-day forecasting and provides fundamental weather data.",
     acc: "#71b3ff"
