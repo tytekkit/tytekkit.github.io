@@ -29,7 +29,7 @@ const ps = {
     box : [
       {size: [2,1], url: "src/spooder/banner.jpg"},
       {size: [1,1], url: "src/spooder/part1.jpg"},
-      {size: [1,1], url: "src/spooder/part3.jpg"},
+      {size: [1,1], url: "src/spooder/part2.jpg"},
       {size: [1,1], url: "src/spooder/logo.svg"},
       {size: [1,1], url: "src/spooder/capability_map.jpg"}],
     link : "https://github.com/GreySole/Spooder",
