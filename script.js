@@ -20,25 +20,25 @@ const ps = {
   "Weather"  : {
     box : [
       {size: [1,1], url: "src/weather/app.gif"},
-      {size: [1,1], url: "src/weather/long.png"},
-      {size: [2,1], url: "src/weather/code.png"}],
+      {size: [1,1], url: "src/weather/long.jpg"},
+      {size: [2,1], url: "src/weather/code.jpg"}],
     txt : "A React weather app that uses geolocation, rain alerts, 7-day forecasting and provides fundamental weather data.",
     acc: "#71b3ff"
   },
   "Spooder"  : {
     box : [
-      {size: [2,1], url: "src/spooder/banner.png"},
-      {size: [1,1], url: "src/spooder/part1.png"},
-      {size: [1,1], url: "src/spooder/part3.png"},
+      {size: [2,1], url: "src/spooder/banner.jpg"},
+      {size: [1,1], url: "src/spooder/part1.jpg"},
+      {size: [1,1], url: "src/spooder/part3.jpg"},
       {size: [1,1], url: "src/spooder/logo.svg"},
-      {size: [1,1], url: "src/spooder/capability_map.png"}],
+      {size: [1,1], url: "src/spooder/capability_map.jpg"}],
     link : "https://github.com/GreySole/Spooder",
     txt : "Spooder is an OSC Client to run chat command interactions by GreySole. I just created the website.",
     acc: "#fab400"
   },
   "Croworn"  : {
     box : [
-      {size: [2,1], url: "src/croworn/page.png"},
+      {size: [2,1], url: "src/croworn/page.jpg"},
       {size: [2,1], url: "src/croworn/logo.svg"},
       {size: [1,1], url: "src/croworn/logo_square.svg"}],
     gh : "https://github.com/tytekkit/croworn",
