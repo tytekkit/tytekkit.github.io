@@ -4,6 +4,7 @@
 const body = document.body,
       intro = body.querySelector("pg[name='Intro']"),
       slide = body.querySelector("pg[name='Projects']"),
+      graphic = body.querySelector("#Graphics"),
       bbls = body.querySelector("pagination");
 
 // SLIDES
@@ -36,16 +37,6 @@ const ps = {
     txt : "Spooder is an OSC Client to run chat command interactions by GreySole. I just created the website.",
     acc: "#fab400"
   },
-  "Croworn"  : {
-    box : [
-      {size: [2,1], url: "src/croworn/page.jpg"},
-      {size: [2,1], url: "src/croworn/logo.svg"},
-      {size: [1,1], url: "src/croworn/logo_square.svg"}],
-    gh : "https://github.com/tytekkit/croworn",
-    link : "https://tytekkit.github.io/croworn/",
-    txt : "CroWorn is a launching fashion co., specialty and traditional style in hats.",
-    acc: "#b66e4d"
-  },
   "Wirenut"  : {
     box : [
       {size: [2,1], url: "src/wirenut/chat.png"},
@@ -55,6 +46,14 @@ const ps = {
     link : "https://wirenut.work",
     txt : "An all-in-one, proprietary cross-platform application solution for iOS, Android, MacOS & Windows, covering support for inventory & file management, video player, scheduling, reporting, training, messaging, notifications and user credentials, with real-time updating & offline async capability. Built on HTML, CSS, JavaScript, jQuery, MYSQL, PHP, NodeJS & Amazon Web Services.",
     acc: "#3F77CA"
+  },
+  "Ghostly"  : {
+    box : [
+      {size: [2,1], url: "src/ghostly/ss1.png"},
+      {size: [2,1], url: "src/ghostly/logo.jpg"},
+      {size: [1,1], url: "src/ghostly/vs.gif"}],
+    txt : "Ghostly is a solo project, party game where you play as floaty ghosts and do floaty ghost stuff, written in GDScript.",
+    acc: "#5da0a7"
   }
 }
 
@@ -92,6 +91,33 @@ mslide = (dir) => {
   (dir == -1) ? current.previousSibling.scrollIntoView({behavior: "smooth", inline: "nearest"}) :
                     current.nextSibling.scrollIntoView({behavior: "smooth", inline: "nearest"});
 }
+
+// GRAPHICS
+
+const gs = {
+  "Lablo"  : {
+    box : [
+      {url: "src/graphics/bc_alic.jpg"},
+      {url: "src/graphics/angry_cat_pillow.jpg"},
+      {url: "src/graphics/cap_fire_logo.jpg"},
+      {url: "src/graphics/cnc_bc.jpg"},
+      {url: "src/graphics/3staxidermy.jpg"},
+      {url: "src/graphics/afc_bc.jpg"}]
+  }
+}
+
+let html2 = "";
+
+for (g in gs) {
+  let set = gs[g];
+  for (img in set["box"]) {
+    let url = set["box"][img]["url"];
+    html2 += `<img src=${url}>`;
+  };
+}
+
+graphic.innerHTML += html2;
+
 
 // SCROLLER - Dots
 

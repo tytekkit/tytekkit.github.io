@@ -537,6 +537,31 @@ button.l:hover, button.r:hover {
   cursor: pointer;
 }
 
+/*GRAPHICS*/
+
+pg[name=Graphics] {
+
+}
+
+pg[name=Graphics] > #Graphics {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+  grid-template-rows: masonry;
+  grid-auto-flow: dense;
+  gap: 1em;
+  background-color: var(--bg);
+  margin: auto;
+  max-height: 80vh;
+  padding: 1em;
+  overflow-y: auto;
+}
+
+#Graphics > img {
+  width: 100%;
+  border: 1px solid gray;
+  transition: 1s ease all;
+}
+
 /* CONTACT */
 
 pg[name=Contact] {
@@ -936,6 +961,7 @@ footer {
     display: block;
     font-size: 2em;
     margin: 2em 1.5em 1em 1.5em;
+    border-bottom: 4px solid var(--acc);
   }
 
   pg[name=Projects] > pg {
@@ -975,6 +1001,25 @@ footer {
     box-shadow: none;
   }
 
+  pg[name=Graphics]:before {
+    content: "Graphic Design";
+    color: var(--acc);
+    display: block;
+    font-size: 2em;
+    margin: 2em 1.5em 2em 1.5em;
+    border-bottom: 4px solid var(--acc);
+  }
+
+  pg[name=Graphics], #Graphics {
+    display: contents;
+    box-sizing: border-box;
+  }
+
+  #Graphics > img {
+    margin: 0.5em 1em;
+    width: calc(100% - 2em);
+  }
+
   pg[name=Contact] {
     height: auto;
     background-position-x: 0%;
@@ -986,7 +1031,9 @@ footer {
     color: var(--acc);
     display: block;
     font-size: 2em;
+    width: 100%;
     margin: 2em 1.5em 1em 1.5em;
+    border-bottom: 4px solid var(--acc);
   }
 
   nav ul li a {
