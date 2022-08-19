@@ -548,11 +548,22 @@ button.l:hover, button.r:hover {
 
 /*GRAPHICS*/
 
-pg[name=Graphics] {
+pg[name=Graphics] > #Graphics:before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: linear-gradient(45deg, transparent 40%, white 50%, transparent 60%);
+  background-size: 500% 500%;
+  background-position: top;
+  transition: 1s ease background-position;
+}
 
+pg[name=Graphics].current > #Graphics:before {
+  background-position: bottom;
 }
 
 pg[name=Graphics] > #Graphics {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
   grid-template-rows: masonry;
