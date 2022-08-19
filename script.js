@@ -94,27 +94,14 @@ mslide = (dir) => {
 
 // GRAPHICS
 
-const gs = {
-  "Lablo"  : {
-    box : [
-      {url: "src/graphics/bc_alic.jpg"},
-      {url: "src/graphics/angry_cat_pillow.jpg"},
-      {url: "src/graphics/cap_fire_logo.jpg"},
-      {url: "src/graphics/cnc_bc.jpg"},
-      {url: "src/graphics/3staxidermy.jpg"},
-      {url: "src/graphics/afc_bc.jpg"}]
-  }
-}
+const gs =
+  [ "src/graphics/bc_alic.jpg", "src/graphics/angry_cat_pillow.jpg",
+    "src/graphics/cap_fire_logo.jpg", "src/graphics/cnc_bc.jpg",
+    "src/graphics/3staxidermy.jpg", "src/graphics/afc_bc.jpg" ];
 
 let html2 = "";
 
-for (g in gs) {
-  let set = gs[g];
-  for (img in set["box"]) {
-    let url = set["box"][img]["url"];
-    html2 += `<img src=${url}>`;
-  };
-}
+for (g in gs) html2 += `<img src=${gs[g]}>`;
 
 graphic.innerHTML += html2;
 
