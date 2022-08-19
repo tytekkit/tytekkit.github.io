@@ -916,6 +916,14 @@ footer {
     overflow-x: hidden;
   }
 
+  tagcloud {
+    transform: scale(0.8);
+  }
+
+  tagcloud:before {
+    font-size: 12em;
+  }
+
   pg[name=Projects] {
     display: contents;
     height: auto;
