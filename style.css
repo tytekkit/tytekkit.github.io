@@ -94,6 +94,10 @@ bubble:hover {
   cursor: pointer;
 }
 
+bubble.current {
+  color: var(--acc);
+}
+
 bubble > bubble {
   display: none;
   font-size: 0.5em;
@@ -382,6 +386,10 @@ pg[name=Projects] el {
   background-color: rgb(20,20,20);
 }
 
+pg.slide > div.gallery {
+  border: 4px solid #ffeb3b;
+}
+
 div.gallery {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -397,6 +405,7 @@ div.gallery {
   background-color: var(--acc);
   overflow: hidden;
   overflow: visible;
+  transition: 1s ease border;
 }
 
 div.gallery > img {
@@ -552,6 +561,7 @@ pg[name=Graphics] > #Graphics {
   background-color: var(--bg);
   margin: auto;
   max-height: 80vh;
+  border: 4px solid var(--acc);
   padding: 1em;
   overflow-y: auto;
 }
