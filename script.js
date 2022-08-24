@@ -12,8 +12,8 @@ const body = document.body,
 const ps = {
   "Lablo"  : {
     box : [
-      {size: [2,4], url: "src/lablo/stream.png"},
-      {size: [1,2], url: "src/lablo/chat.png"},
+      {size: [2,4], url: "src/lablo/stream.jpg"},
+      {size: [1,2], url: "src/lablo/chat.jpg"},
       {size: [1,2], url: "src/lablo/splash.gif"}],
     txt : "Lablo is a desktop app for Win/MacOS that streams to Twitch, with custom overlays, stream controls & widgets. Built in Electron utilizing html, js, css & node.js",
     acc: "#6b48da"
@@ -39,9 +39,9 @@ const ps = {
   },
   "Wirenut"  : {
     box : [
-      {size: [2,1], url: "src/wirenut/chat.png"},
-      {size: [2,1], url: "src/wirenut/reschedule.png"},
-      {size: [2,2], url: "src/wirenut/audit.png"},
+      {size: [2,1], url: "src/wirenut/chat.jpg"},
+      {size: [2,1], url: "src/wirenut/reschedule.jpg"},
+      {size: [2,2], url: "src/wirenut/audit.jpg"},
       {size: [1,1], url: "src/wirenut/logo.svg"}],
     link : "https://wirenut.work",
     txt : "An all-in-one, proprietary cross-platform application solution for iOS, Android, MacOS & Windows, covering support for inventory & file management, video player, scheduling, reporting, training, messaging, notifications and user credentials, with real-time updating & offline async capability. Built on HTML, CSS, JavaScript, jQuery, MYSQL, PHP, NodeJS & Amazon Web Services.",
@@ -49,7 +49,7 @@ const ps = {
   },
   "Ghostly"  : {
     box : [
-      {size: [2,1], url: "src/ghostly/ss1.png"},
+      {size: [2,1], url: "src/ghostly/ss1.jpg"},
       {size: [2,1], url: "src/ghostly/logo.jpg"},
       {size: [1,1], url: "src/ghostly/vs.gif"}],
     txt : "Ghostly is a solo project, party game where you play as floaty ghosts and do floaty ghost stuff, written in GDScript.",
@@ -99,7 +99,7 @@ const gs =
     "src/graphics/cap_fire_logo.jpg", "src/graphics/cnc_bc.jpg",
     "src/graphics/3staxidermy.jpg", "src/graphics/afc_bc.jpg",
     "src/graphics/map.jpg", "src/graphics/cpsol.jpg",
-    "src/graphics/hpp_bc.jpg"];
+    "src/graphics/hpp_bc.jpg", "src/graphics/craftia_label.jpg"];
 
 let html2 = "";
 
