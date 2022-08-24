@@ -97,9 +97,9 @@ mslide = (dir) => {
 const gs =
   [ "src/graphics/bc_alic.jpg", "src/graphics/angry_cat_pillow.jpg",
     "src/graphics/cap_fire_logo.jpg", "src/graphics/cnc_bc.jpg",
-    "src/graphics/3staxidermy.jpg", "src/graphics/afc_bc.jpg",
-    "src/graphics/map.jpg", "src/graphics/cpsol.jpg",
-    "src/graphics/hpp_bc.jpg", "src/graphics/craftia_label.jpg"];
+    "src/graphics/3staxidermy.jpg", "src/graphics/map.jpg",
+    "src/graphics/cpsol.jpg", "src/graphics/hpp_bc.jpg",
+    "src/graphics/craftia_label.jpg" ];
 
 let html2 = "";
 
