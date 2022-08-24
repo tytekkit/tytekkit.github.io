@@ -236,6 +236,28 @@ el > h1 {
   font-size: 2em;
 }
 
+profile {
+  position: relative;
+}
+
+profile > img:nth-child(1) {
+  opacity: 0;
+}
+
+profile > img:nth-child(1) {
+  animation: 2s fade cubic-bezier(0.47, 0, 0.745, 0.715) forwards !important;
+  animation-delay: 1.5s !important;
+}
+
+profile > img:nth-child(2) {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 260px;
+  height: 260px;
+  z-index: -1;
+}
+
 el > img {
   width: 240px;
   height: 240px;
